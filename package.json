@@ -1,0 +1,55 @@
+{
+  "name": "node-project-doctor",
+  "version": "0.1.0",
+  "description": "Fast, actionable diagnostics CLI and audit library for Node.js projects detecting package.json flaws, lockfile conflicts, and misconfigurations.",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "node-project-doctor": "./bin/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juancastingo/node-project-doctor.git"
+  },
+  "keywords": [
+    "doctor",
+    "node",
+    "audit",
+    "diagnostics",
+    "package-json",
+    "cli",
+    "healthcheck"
+  ],
+  "author": "Juan Castiñeira <juancastingo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juancastingo/node-project-doctor/issues"
+  },
+  "homepage": "https://github.com/juancastingo/node-project-doctor#readme",
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "@types/node": "^20.14.0"
+  }
+}
